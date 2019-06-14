@@ -1,0 +1,16 @@
+<ul>
+  <li class="tasks" *ngFor="let task of tasks">
+    {{task.payload.doc.data().title | uppercase}}
+    <button class="delete" title="Delete Task" (click)="delete(task)">x</button>
+  </li>
+</ul>
+
+<div>
+  <label>
+    <h3>Create new task</h3><br />
+    <input #itemTitle />
+  </label><br />
+  <button (click)="add(taskTitle.value); taskTitle.value">
+    CREATE
+  </button>
+</div>

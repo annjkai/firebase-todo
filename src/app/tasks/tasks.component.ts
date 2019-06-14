@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TasksService } from '../shared/tasks.service';
 
 @Component({
   selector: 'app-tasks',
@@ -6,10 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./tasks.component.sass']
 })
 export class TasksComponent implements OnInit {
+  tasks: Array<any>;
 
-  constructor() { }
+  constructor(public tasksService: TasksService) { }
 
   ngOnInit() {
+    this.tasksService.getTasks().then(result => {
+      this.tasks = result;
+      console.log(result);
+    });
   }
 
 }
