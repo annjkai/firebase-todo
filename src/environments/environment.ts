@@ -4,14 +4,8 @@
 
 export const environment = {
   production: false,
-  firebase: {
-    apiKey: firebaseApiKey,
-    authDomain: firebaseAuthDomain,
-    databaseURL: firebaseDatabaseUrl,
-    projectId: firebaseProjectId,
-    storageBucket: firebaseStorageBucket,
-    messagingSenderId: firebaseMessagingSenderId,
-    appId: firebaseAppId
+  firebaseConfig: {
+    // your API data here
   }
 };
 

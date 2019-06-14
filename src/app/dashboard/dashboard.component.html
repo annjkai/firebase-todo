@@ -1,0 +1,23 @@
+<button>
+  DB CALL
+</button>
+
+<ul>
+  <li *ngFor="let task of tasks">
+    {{task.payload.doc.data().title}}
+  </li>
+</ul>
+
+<!--
+<tbody>
+  <tr *ngFor="let task of tasks">
+     <td>{{ task.payload.doc.data().id }}</td>
+     <td>{{ task.payload.doc.data().title }}</td>
+     <td><span 
+          *ngFor="let task of task.payload.doc.data().tasks">
+         {{ task }}
+        </span>
+     </td>
+  </tr>
+  </tbody>
+-->
