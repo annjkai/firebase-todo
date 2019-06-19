@@ -5,10 +5,16 @@
 export const environment = {
   production: false,
   firebaseConfig: {
-    // you API key here
+    apiKey: 'AIzaSyDm1d1TJFRYdsbHCuaqiEwtTOJz_6TXKc4',
+    authDomain: 'ng-to-do-d15a4.firebaseapp.com',
+    databaseURL: 'https://ng-to-do-d15a4.firebaseio.com',
+    projectId: 'ng-to-do-d15a4',
+    storageBucket: 'ng-to-do-d15a4.appspot.com',
+    messagingSenderId: '242149613070',
+    appId: '1:242149613070:web:c7cb7c301a651678'
   }
 };
-
+// you API key here
 /*
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.

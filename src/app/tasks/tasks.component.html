@@ -1,16 +1,21 @@
 <ul>
   <li class="tasks" *ngFor="let task of tasks">
     {{task.payload.doc.data().title | uppercase}}
-    <button class="delete" title="Delete Task" (click)="delete(task)">x</button>
+    <button class="delete" title="Delete Task" (click)="deleteTask(task)">x</button>
   </li>
 </ul>
 
-<div>
+<form [formGroup]="this.tasksService.form">
+  <input placeholder="Title" formControlName="taskTitle" type="text" class="task-title"> </form> 
+  
+  <div>
   <label>
     <h3>Create new task</h3><br />
-    <input #itemTitle />
+    <input #taskTitle />
   </label><br />
-  <button (click)="add(taskTitle.value); taskTitle.value">
+  <button (click)="addTask(task)">
     CREATE
   </button>
-</div>
+  </div>
+
+  <!--(click)="add(taskTitle.value); taskTitle.value"-->
