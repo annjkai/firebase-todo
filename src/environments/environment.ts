@@ -5,13 +5,8 @@
 export const environment = {
   production: false,
   firebaseConfig: {
-    apiKey: 'AIzaSyDm1d1TJFRYdsbHCuaqiEwtTOJz_6TXKc4',
-    authDomain: 'ng-to-do-d15a4.firebaseapp.com',
-    databaseURL: 'https://ng-to-do-d15a4.firebaseio.com',
-    projectId: 'ng-to-do-d15a4',
-    storageBucket: 'ng-to-do-d15a4.appspot.com',
-    messagingSenderId: '242149613070',
-    appId: '1:242149613070:web:c7cb7c301a651678'
+    // your API key here
+   
   }
 };
 // you API key here
