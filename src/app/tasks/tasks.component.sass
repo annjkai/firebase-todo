@@ -3,17 +3,51 @@ $font-stack: Montserrat, sans-serif
 
 *
     font-family: $font-stack
+    padding: 0 10% 0 10%
+
+a
+    text-decoration: none
+    color: #4c4a49
+
+h4
+    position: relative
 
 .tasks
     font-family: $font-stack
+    font-weight: bold
     margin: 0 0 2em 0
     list-style-type: none
-    padding: 0
-    li
-        cursor: pointer
-        position: relative
-        background-color: #ffc86e 
-        border-radius: 4px
-        &:hover
-            background-color: #f9e4c0 !important
-            left: .1em
+    padding: 10px
+    cursor: pointer
+    position: relative
+    background-color: #ffc86e
+    border-radius: 5px
+    width: 100%
+    height: 25px
+    &:hover
+        background-color: #f9e4c0 !important
+        left: .1em
+
+button
+    background-color: #4c4a49
+    color: white
+    padding: 5px 10px
+    border: none
+    border-radius: 5px
+    cursor: hand
+    &:hover
+        background-color: #51e3c2
+        color: #4c4a49
+    &.delete
+        float: right
+
+
+@media screen and (min-width: 600px)
+    .tasks
+        width: 50%
+
+@media screen and (min-width: 1000px)
+    .tasks
+        width: 30%
+    
+        

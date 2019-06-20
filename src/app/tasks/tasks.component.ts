@@ -20,6 +20,7 @@ export class TasksComponent implements OnInit {
   // addTask = task => this.tasks.push(task);
 
   deleteTask() {
+    /*
     this.tasksService.deleteTask(this.task)
       .then(
         res => {
@@ -29,6 +30,7 @@ export class TasksComponent implements OnInit {
           console.log(err);
         }
       );
+      */
   }
     /*{
     this.tasksService.input.value.task = this.tasks;

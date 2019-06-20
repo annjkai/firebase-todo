@@ -6,7 +6,7 @@ export const environment = {
   production: false,
   firebaseConfig: {
     // your API key here
-   
+
   }
 };
 // you API key here
