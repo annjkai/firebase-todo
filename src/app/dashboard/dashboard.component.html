@@ -1,22 +1,25 @@
-    
-    <div class="tasks-container">
-      <app-tasks></app-tasks>
-    </div>
+<div class="tasks-container">
+  <app-tasks></app-tasks>
+</div>
 
-
+<div>
+  <label>
+    <h3>Create new task</h3><br />
+    <input [(ngModel)]="taskTitle" name="taskTitle" type="text" class="task-input" placeholder="Let's get it done!" />
+  </label><br />
+  <button (click)="addTask(task)">
+    CREATE
+  </button>
+</div>
+<!--
     <form [formGroup]="this.tasksService.form">
       <input placeholder="Title" formControlName="taskTitle" type="text" class="task-title"> </form>
+-->
 
-    <div>
-      <label>
-        <h3>Create new task</h3><br />
-        <input #taskTitle />
-      </label><br />
-      <button (click)="addTask(task)">
-        CREATE
-      </button>
-    </div>
-    <!--
+
+
+
+<!--
 <tbody>
   <tr *ngFor="let task of tasks">
      <td>{{ task.payload.doc.data().id }}</td>

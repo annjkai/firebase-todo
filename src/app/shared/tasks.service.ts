@@ -1,44 +1,35 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { FormControl, FormGroup } from '@angular/forms';
+
+import { Task } from '../app.model';
+import { config } from '../app.config';
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class TasksService {
 
-  constructor(public firestore: AngularFirestore) { }
+  tasks: AngularFirestoreCollection<Task>;
+  private taskDoc: AngularFirestoreDocument<Task>;
 
-  form = new FormGroup({
-    taskTitle: new FormControl(''),
-    taskId: new FormControl('')
-  });
+  constructor(public firestore: AngularFirestore) {
+    this.tasks = firestore.collection<Task>(config.collection_endpoint);
+   }
 
-  // CREATE
-  createTask(data) {
-// tslint:disable-next-line: no-shadowed-variable
-    return new Promise<any>((resolve, reject) => {
-      this.firestore.collection('tasks')
-          .add(data)
-          .then(res => {}, err => reject(err));
-    });
-  }
+   addTask(task) {
+     this.tasks.add(task);
+   }
 
-  // READ
-  getTasks() {
-// tslint:disable-next-line: no-shadowed-variable
-    return new Promise<any>((resolve, reject) => {
-      this.firestore.collection('tasks').snapshotChanges()
-        .subscribe(snapshots => {
-          resolve(snapshots);
-        });
-    });
-  }
+   updateTask(id, update) {
+     this.taskDoc = this.firestore.doc<Task>(`${config.collection_endpoint}/${id}`);
+     this.taskDoc.update(update);
+   }
+
+    deleteTask(id) {
+      this.taskDoc = this.firestore.doc<Task>(`${config.collection_endpoint}/${id}`);
+      this.taskDoc.delete();
+    }
 }
-
-/*
-getTasks() {
-    return this.firestore.collection('tasks').snapshotChanges();
-  }
-*/
 

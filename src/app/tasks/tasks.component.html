@@ -1,12 +1,9 @@
 <ul>
-  <li class="tasks" *ngFor="let task of tasks">
-    <a>{{task.payload.doc.data().title | uppercase}}</a>
-    <button class="delete" 
-            title="Delete Task" 
-            (click)="deleteTask(task)">X</button>
+  <li class="tasks" *ngFor="let task of tasks | async; let i = index" [attr.data-index]="i">
+    <a>{{task.title | uppercase}}</a>
+    <button class="delete" title="Delete Task" (click)="deleteTask(task)">X</button>
   </li>
 </ul>
 
-
-
 <!--(click)="add(taskTitle.value); taskTitle.value"-->
+<!--<a>{{task.payload.doc.data().title | uppercase}}</a>-->

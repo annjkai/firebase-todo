@@ -1,5 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { TasksService } from '../shared/tasks.service';
+import { AngularFirestore } from '@angular/fire/firestore';
+
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { config } from '../app.config';
+import { Task } from '../app.model';
+
 
 @Component({
   selector: 'app-tasks',
@@ -7,45 +14,38 @@ import { TasksService } from '../shared/tasks.service';
   styleUrls: ['./tasks.component.sass']
 })
 export class TasksComponent implements OnInit {
-  tasks: Array<any>;
+  tasks: Observable<any[]>;
+  taskTitle: string;
+  editTask: boolean;
+  taskToEdit: any = { };
 
-  constructor(public tasksService: TasksService) { }
+  constructor(public firestore: AngularFirestore, public tasksService: TasksService) { }
 
   ngOnInit() {
-    this.tasksService.getTasks().then(result => {
-      this.tasks = result;
-      console.log(result);
-    });
+    // READ operation
+    this.tasks = this.firestore.collection(config.collection_endpoint)
+      .snapshotChanges()
+      .pipe(
+        map(actions => {
+        return actions.map(action => {
+          const data = action.payload.doc.data() as Task;
+          const id = action.payload.doc.id;
+          return { id, ...data };
+        });
+      }));
   }
-  // addTask = task => this.tasks.push(task);
 
-  deleteTask() {
-    /*
-    this.tasksService.deleteTask(this.task)
-      .then(
-        res => {
-          alert('task deleted');
-        },
-        err => {
-          console.log(err);
-        }
-      );
-      */
-  }
-    /*{
-    this.tasksService.input.value.task = this.tasks;
-    const data = this.tasksService.input.value;
+    // UPDATE operation
+    updateTask(task) {
+      console.log(task);
+      this.taskToEdit = task;
+      this.editTask = true;
+    }
 
-    this.tasksService.createTask(data)
-      .then(res => {
-        alert('New task created');
-      });
-  }*/
-
-  /*deleteTask = task => {
-    const index = this.tasks.indexOf(task);
-    if (index > -1) {this.tasks.splice(index, 1)}
-  }
-   */
+    // DELETE operation
+    deleteTask(task) {
+      const taskId = task.id;
+      this.tasksService.deleteTask(taskId);
+    }
 
 }
