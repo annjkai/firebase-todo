@@ -13,12 +13,14 @@ import { TasksComponent } from './tasks/tasks.component';
 
 import { TasksService } from './shared/tasks.service';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { TaskDetailComponent } from './task-detail/task-detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TasksComponent,
-    DashboardComponent
+    DashboardComponent,
+    TaskDetailComponent
   ],
   imports: [
     BrowserModule,

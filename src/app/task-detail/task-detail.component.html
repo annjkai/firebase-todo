@@ -1,0 +1,12 @@
+<button routerLink="/dashboard">GO BACK</button>
+
+<div *ngIf="task">
+  <h2>{{task.title | uppercase}}</h2>
+
+  <div>
+    <label>Title:
+      <input [(ngModel)]="task.title" placeholder="Title">
+    </label>
+  </div>
+
+</div>
