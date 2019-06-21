@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreDocument, AngularFirestoreCollection } from '@angular/fire/firestore';
-import { FormControl, FormGroup } from '@angular/forms';
 
 import { Task } from '../app.model';
 import { config } from '../app.config';
+import { of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +16,15 @@ export class TasksService {
 
   constructor(public firestore: AngularFirestore) {
     this.tasks = firestore.collection<Task>(config.collection_endpoint);
+   }
+/*
+   getTask(id: number) {
+    this.taskDoc = this.firestore.doc<Task>(`${config.collection_endpoint}/${id}`);
+    return of(this.taskDoc.find(task => task.id === id));
+   }
+*/
+   getTask(id) {
+    this.taskDoc = this.firestore.doc<Task>(`${config.collection_endpoint}/${id}`);
    }
 
    addTask(task) {
