@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 
 import { TasksService } from '../shared/tasks.service';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -13,7 +14,10 @@ export class DashboardComponent implements OnInit {
   editTask: boolean;
   taskToEdit: any = { };
 
-  constructor(public firestore: AngularFirestore, public tasksService: TasksService) { }
+  constructor(
+    public firestore: AngularFirestore,
+    public tasksService: TasksService,
+    public authService: AuthService) { }
 
   ngOnInit() { }
 
