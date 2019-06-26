@@ -12,22 +12,17 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TasksComponent } from './tasks/tasks.component';
 
+import { AuthService } from './shared/auth.service';
 import { TasksService } from './shared/tasks.service';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { TaskDetailComponent } from './task-detail/task-detail.component';
-
-import { LogInComponent } from './log-in/log-in.component';
-import { RegisterComponent } from './register/register.component';
-import { AuthService } from './services/auth.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     TasksComponent,
     DashboardComponent,
-    TaskDetailComponent,
-    LogInComponent,
-    RegisterComponent,
+    TaskDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +33,7 @@ import { AuthService } from './services/auth.service';
     ReactiveFormsModule,
     FormsModule
   ],
-  providers: [TasksService, AuthService],
+  providers: [AuthService, TasksService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

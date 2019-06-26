@@ -3,7 +3,20 @@
   <h1>
     {{ title }}
   </h1>
+</div>
 
-<router-outlet></router-outlet>
+<div class="auth-container">
+  <h2 *ngIf="authService.user | async" routerLink="/dashboard">Welcome {{(authService.user | async)?.uid}}<app-dashboard></app-dashboard></h2>
+  <div *ngIf="!(authService.user | async)">
+    <input type="text" [(ngModel)]="email" placeholder="Email address">
+    <input type="text" [(ngModel)]="password" placeholder="Password">
+    <button (click)="signUpWithEmail()" [disabled]="!email || !password">Sign Up</button>
+  </div>
+
+  <button (click)="signInWithEmail()" [disabled]="!email || !password">Sign In</button>
+  <button (click)="signOut()">Sign Out</button>
+
+</div>
 
 <!--<app-dashboard></app-dashboard>-->
+<!--Welcome {{ (authService.user | async)?.email }}!-->

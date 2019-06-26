@@ -18,11 +18,14 @@ export class TasksComponent implements OnInit {
   taskTitle: string;
   editTask: boolean;
   taskToEdit: any = { };
+  author: string;
 
   constructor(public firestore: AngularFirestore, public tasksService: TasksService) { }
 
   ngOnInit() {
     // READ operation
+    // kill it
+
     this.tasks = this.firestore.collection(config.collection_endpoint)
       .snapshotChanges()
       .pipe(
@@ -36,12 +39,14 @@ export class TasksComponent implements OnInit {
   }
 
     // UPDATE operation
-    updateTask(task) {
+    /*
+    updateTask(task, author) {
       console.log(task);
       this.taskToEdit = task;
       this.editTask = true;
+      this.author = author;
     }
-
+*/
     // DELETE operation
     deleteTask(task) {
       const taskId = task.id;
